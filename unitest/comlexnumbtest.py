@@ -238,17 +238,17 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(result.imag, 6)
       
     def test_imul(self):
-        c1 = Complex(1, 3)
+        c1 = ComplexNumber(1, 3)
         c1 *= 2
         self.assertEqual(c1.real, 2)
         self.assertEqual(c1.imagine, 6)
 
-        c1 = Complex(1, 2)
-        c1 *= Complex(3, 4)
+        c1 = ComplexNumber(1, 2)
+        c1 *= ComplexNumber(3, 4)
         self.assertEqual(c1.real, -9)
         self.assertEqual(c1.imagine, 13)
 
-        c1 = Complex(1, 2)
+        c1 = ComplexNumber(1, 2)
         c1 *= Rational(1, 2)
         self.assertEqual(c1.real, Rational(1, 2))
         self.assertEqual(c1.imagine, 1)
@@ -340,90 +340,90 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(repr(c), "Complex(real=1/2, imagine=3/4)")
 
     def test_type_error_add(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c + "string"
           
     def test_type_error_iadd(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c += "string"
           
     def test_type_error_sub(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c - "string"
 
     def test_type_error_isub(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c -= "string"
 
     def test_type_error_mul(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c * "string"
           
     def test_type_error_imul(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c *= "string"
           
     def test_type_error_truediv(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c / "string"
           
     def test_type_error_itruediv(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c /= "string" 
           
     def test_type_error_pow(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c ** "string"
 
     def test_not_implemented_add(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__add__("string"), NotImplemented)
 
     def test_not_implemented_sub(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__sub__("string"), NotImplemented)
 
     def test_not_implemented_mul(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__mul__("string"), NotImplemented)
 
     def test_not_implemented_truediv(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__truediv__("string"), NotImplemented)
 
     def test_not_implemented_pow(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__pow__("string"), NotImplemented)
 
     def test_not_implemented_eq(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__eq__("string"), NotImplemented)
 
     def test_not_implemented_ne(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         self.assertEqual(c.__ne__("string"), NotImplemented)
 
     def test_type_error_abs(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             abs(c, "extra_arg")
 
     def test_type_error_min(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             -c("extra_arg")
 
     def test_type_error_arg(self):
-        c = ComplexNumber(1, 2)
+        c = ComplexNumber(1, 42)
         with self.assertRaises(TypeError):
             c.arg("extra_arg")
 
