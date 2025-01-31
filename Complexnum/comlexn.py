@@ -34,7 +34,7 @@ class ComplexNumber:
         if isinstance(other, Rational | int | float):
             return Complex(self.real + Rational(other), self.imag)
         else:
-            raise TypeError("operand must be a complexnumber or a number.")
+            raise TypeError("operand must be a rational or a number.")
 
     def __iadd__(self, other):
         if isinstance(other, ComplexNumber):
@@ -44,7 +44,7 @@ class ComplexNumber:
             self.real += Rational(other)
             self.imag += Rational(other)
         else:
-            raise TypeError("operand must be a complexnumber or a number.")
+            raise TypeError("operand must be a rational or a number.")
         return self
 
     def __sub__(self, other):
@@ -53,7 +53,7 @@ class ComplexNumber:
         elif isinstance(other, (Rational, int, float)):
             return ComplexNumber(self.real - Rational(other), self.imag)
         else:
-            raise TypeError("operand must be a complexnumber or a number.")
+            raise TypeError("operand must be a rational or a number.")
     
     def __isub__(self, other):
         if isinstance(other, ComplexNumber):
@@ -62,7 +62,7 @@ class ComplexNumber:
         elif isinstance(other, (Rational, int, float)):
             self.real -= Rational(other)  # Преобразуем в Rational
         else:
-            raise TypeError("operand must be a complex number or a number.")
+            raise TypeError("operand must be a rational or a number.")
         return self
 
     def __mul__(self, other):
@@ -73,7 +73,7 @@ class ComplexNumber:
         elif isinstance(other, (Rational, int, float)):
             return ComplexNumber(self.real * Rational(other), self.imag * Rational(other))
         else:
-            raise TypeError("operand must be a complexnumber or a number.")
+            raise TypeError("operand must be a rational or a number.")
 
     def __truediv__(self, other):
         if isinstance(other, ComplexNumber):
@@ -88,7 +88,7 @@ class ComplexNumber:
                 raise ZeroDivisionError("cannot divide by zero.")
             return ComplexNumber(self.real / Rational(other), self.imag / Rational(other))
         else:
-            raise TypeError("operand must be a complexnumber or a number.")
+            raise TypeError("operand must be a rational or a number.")
         
     def __itruediv__(self, other):
         if isinstance(other, ComplexNumber):
@@ -103,7 +103,7 @@ class ComplexNumber:
             self.real /= Rational(other)
             self.imag /= Rational(other)
         else:
-            raise TypeError("operand must be a complex number or a number.")
+            raise TypeError("operand must be a rational or a number.")
         return self
         
     def __eq__(self, other):
@@ -112,7 +112,7 @@ class ComplexNumber:
         if isinstance(other, Rational | int | float):
             return self.real == other and self.imag == 0
         else:
-            raise TypeError("operand must be a complex number or a number.")
+            raise TypeError("operand must be a rational or a number.")
 
     def __ne__(self, other):
         return not self == other
@@ -129,10 +129,10 @@ class ComplexNumber:
         return result
 
     def arg(self):
-        return math.atan2(self.imag.to_float(), self.real.to_float())
+        return math.atan2(self.imag.__float(), self.real.__float())
 
     def abs(self):
-        return math.sqrt(self.real.to_float() ** 2 + self.imag.to_float() ** 2)
+        return math.sqrt(self.real.__float() ** 2 + self.imag.__float() ** 2)
 
     def __str__(self):
         sign = '+' if self.imag.numerator >= 0 else '-'
@@ -140,4 +140,3 @@ class ComplexNumber:
 
     def __repr__(self):
         return f"ComplexNumber(real={self.real}, imag={self.imag})"
-
