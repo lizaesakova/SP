@@ -123,17 +123,6 @@ class Rational:
                 self.denominator)
         else:
             raise TypeError("other must be an integer or Rational")
-          
-  def __iadd__(self, other):
-        if isinstance(other, Rational):
-            self.numerator = self.numerator * other.denominator + self.denominator * other.numerator
-            self.denominator = self.denominator * other.denominator
-        elif isinstance(other, int):
-            self.numerator += other * self.denominator
-        else:
-            raise TypeError("other operand must be an integer or Rational")
-        self.simplify()
-        return self
 
 
   def __sub__(self, other):
@@ -147,17 +136,6 @@ class Rational:
                 self.denominator)
         else:
             raise TypeError("other must be an integer or Rational")
-          
-  def __isub__(self, other):
-        if isinstance(other, Rational):
-            self.numerator = self.numerator * other.denominator - self.denominator * other.numerator
-            self.denominator = self.denominator * other.denominator
-        elif isinstance(other, int):
-            self.numerator -= other * self.denominator
-        else:
-            raise TypeError("other operand must be an integer or Rational")
-        self.simplify()
-        return self
 
 
   def __mul__(self, other):
@@ -173,17 +151,6 @@ class Rational:
             )
         else:
             raise TypeError("other must be an integer or Rational")
-          
-  def __imul__(self, other):
-        if isinstance(other, Rational):
-            self.numerator *= other.numerator
-            self.denominator *= other.denominator
-        elif isinstance(other, int):
-            self.numerator *= other
-        else:
-            raise TypeError("other operand must be an integer or Rational")
-        self.simplify()
-        return self
 
   def __div__(self, other):
     if isinstance(other, Rational):
@@ -195,17 +162,6 @@ class Rational:
         return Rational(self.numerator, self.denominator * other)
     else:
       raise TypeError("other must be an integer or Rational")
-
-  def __idiv__(self, other):
-    if isinstance(other, Rational):
-      self.numerator = self.numerator * other.denominator
-      self.denominator = self.denominator * other.numerator
-    elif isinstance(other, int):
-      self.denominator = self.denominator * other
-    else:
-      raise TypeError("other operand must be an integer or Rational")
-    self.simplify()
-    return self
 
   def __eq__(self, other):
     if isinstance(other, Rational):
@@ -219,11 +175,18 @@ class Rational:
   def __pow__(self, other: int | None):
         if not isinstance(other, int):
             raise TypeError("other operand must be an int")
-
         if other < 0:
             return Rational(self.denominator ** abs(other), self.numerator ** abs(other))
         elif other > 0:
             return Rational(self.numerator ** other, self.denominator ** other)
+          
+  def __round__(self, n=None):
+      if n is None:
+          return Rational(round(self.numerator / self.denominator))
+      else:
+          factor = 10 ** n
+          round_numerator = round(self.numerator * factor / self.denominator)
+          return Rational(round_numerator, factor)
 
   def __abs__(self):
     return Rational(abs(self.numerator), abs(self. denominator))
@@ -243,7 +206,7 @@ class Rational:
   def __int__(self):
       return self.numerator // self.denominator
 
-  def to_float(self):
+  def __float(self):
     return self.numerator / self.denominator
   
   def __min__(self):
