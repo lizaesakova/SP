@@ -2,9 +2,16 @@ import math
 from rational import Rational
 
 class ComplexNumber:
+    """
+    Класс для представления комплексных чисел в виде real + imag*i.
 
+    """
     def __init__(self, real: int | Rational | float, imag: int | Rational | float=0):
-        
+        """
+        Инициализация комплексного числа.
+        real: Действительная часть комплексного числа.
+        imag: Мнимая часть комплексного числа.
+        """
         self.__real = real
         self.__imag = imag
 
