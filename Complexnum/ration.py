@@ -17,10 +17,6 @@ class Rational:
       raise ValueError("You can't divide by zero.")
 
     # Преобразуем float в Rational
-    if isinstance(n, float):
-        n = Rational(*self._float_to_rational(n))
-    if isinstance(m, float):
-        m = Rational(*self._float_to_rational(m))
     if isinstance(n, Rational) or isinstance(m, Rational):
         self._process_rational_input(n, m)
     else:
