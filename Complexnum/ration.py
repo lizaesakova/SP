@@ -2,18 +2,33 @@ import math
 from math import gcd
 
 class Rational:
+    """
+    Класс для представления рациональных чисел в виде дробей (числитель/знаменатель).
+    """
+  
   def __init__(self, n, m=1):
-        if m==0:
-          raise ValueError("You can't divide by zero.")
-        if isinstance(n,Rational) or isinstance(m,Rational):
-            self._rational_input(n,m)
-        else:
-            self._rationalt_input(n,m)
-        self._simplify()
+    """
+    Инициализация рационального числа.
+
+    n: Числитель или другое рациональное число.
+    m: Знаменатель (не может быть равным нулю).
+    """
+    if m==0:
+      raise ValueError("You can't divide by zero.")
+    if isinstance(n,Rational) or isinstance(m,Rational):
+        self._rational_input(n,m)
+    else:
+        self._rationalt_input(n,m)
+    self._simplify()
 
 
   def _process_rational_input(self, n, m):
-    
+    """
+    если числитель или знаменатель уже является рациональным числом.
+
+    n: Числитель или рациональное число.
+    m: Знаменатель или рациональное число.
+    """
     n_ration = isinstance(n, Rational)
     m_ration = isinstance(m, Rational)
 
@@ -28,7 +43,12 @@ class Rational:
         self.denominator = m.numerator
     
   def _process_float_input(self, n, m):
-    
+    """
+    если числитель или знаменатель является числом с плавающей точкой.
+
+    n: Числитель или число с плавающей точкой.
+    m: Знаменатель или число с плавающей точкой.
+    """
     n_numerator, n_denominator = None, None
     m_numerator, m_denominator = None, None
 
