@@ -15,10 +15,10 @@ class Rational:
     """
     if m==0:
       raise ValueError("You can't divide by zero.")
-    if isinstance(n,Rational) or isinstance(m,Rational):
-        self._rational_input(n,m)
+    if isinstance(n, Rational) or isinstance(m, Rational):
+        self._process_rational_input(n, m)
     else:
-        self._rationalt_input(n,m)
+        self._process_float_input(n, m)
     self._simplify()
 
 
