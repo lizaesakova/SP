@@ -1,4 +1,5 @@
 import math
+from math import gcd
 
 class Rational:
   def __init__(self, n, m=1):
@@ -103,7 +104,6 @@ class Rational:
       raise ValueError("Division by zero")
 
   def simplify(self):
-        from math import gcd
         common_divisor = gcd(self.numerator, self.denominator)
         self.numerator //= common_divisor
         self.denominator //= common_divisor
